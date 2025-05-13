@@ -1,5 +1,39 @@
 cont = 1
-personas = []
+personas = [{
+  "id": 1,
+  "nombre": "Carlos",
+  "apellido": "Gómez",
+  "edad": 30,
+  "telefono": [
+    {
+      "identificador": "personal",
+      "telefono": "3111234567",
+      "tipo": "móvil"
+    },
+    {
+      "identificador": "trabajo",
+      "telefono": "6041234567",
+      "tipo": "fijo"
+    }
+  ]
+},{
+  "id": 2,
+  "nombre": "Laura",
+  "apellido": "Martínez",
+  "edad": 25,
+  "telefono": [
+    {
+      "identificador": "casa",
+      "telefono": "6017654321",
+      "tipo": "fijo"
+    },
+    {
+      "identificador": "emergencia",
+      "telefono": "3209876543",
+      "tipo": "móvil"
+    }
+  ]
+}]
 persona = {}
 booleanito = True
 while (booleanito):
@@ -43,17 +77,30 @@ while (booleanito):
         print("#### Lista Personas ####")
         print("#################")
         for persona in range(len(personas)):
+            print('################################')
             for atributo in personas[persona]:
-                print(atributo, ': ', personas[persona][atributo])
+                if atributo!='telefono':
+                    print(atributo, ': ', personas[persona][atributo])
+                else:
+                    for telefono in personas[persona][atributo]:
+                        for atri in telefono:                       
+                            print(atri, ': ', telefono[atri])
+                        
+                      
     elif (opcionUsuario == 3):
         print("#################")
         print("#### Persona ####")
         print("#################")
         busacado = input('ingrese el nombre de la persona')
         for persona in range(len(personas)):
-            if (persona["nombre"] == busacado):
+            if (persona["id"] == busacado):
                 for atributo in personas[persona]:
-                    print(atributo, ': ', personas[persona][atributo])
+                    if atributo!='telefono':
+                        print(atributo, ': ', personas[persona][atributo])
+                    else:
+                        for telefono in personas[persona][atributo]:
+                            for atri in telefono:                       
+                                print(atri, ': ', telefono[atri])
 
     elif (opcionUsuario == 4):
         print("#################")
@@ -61,7 +108,7 @@ while (booleanito):
         print("#################")
         busacado = input('ingrese el nombre de la persona')
         for persona in range(len(personas)):
-            if (persona["nombre"] == busacado):
+            if (persona["id"] == busacado):
                 nombre = input('nombre: ')
                 apellido = input('apellido: ')
                 edad = int(input('edad: '))
@@ -85,7 +132,7 @@ while (booleanito):
         print("#################")
         busacado = input('ingrese el nombre de la persona')
         for persona in range(len(personas)):
-            if (persona["nombre"] == busacado):
+            if (persona["id"] == busacado):
                 personas.remove(persona)
     elif (opcionUsuario == 6):
         booleanito = False
